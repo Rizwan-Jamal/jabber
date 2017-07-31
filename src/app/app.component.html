@@ -1,9 +1,14 @@
-<ul>
-  <li *ngFor="let m of messages | async">{{m.name}}: {{m.message}}</li>
-</ul>
-
-<md-input-container>
-  <input mdInput placeholder="say hello !" #currentMessage>
-</md-input-container>
-<button (click)="send(currentMessage.value)"><i class="material-icons">send</i></button>
-
+<div *ngIf="!user">
+  spinning ...
+  <md-spinner></md-spinner>
+</div>
+<div *ngIf="user">
+  <ul>
+    <li *ngFor="let m of messages | async">{{m.name}}: {{m.message}}</li>
+  </ul>
+  <md-input-container>
+    <input mdInput placeholder="say hello !" (input)="currentMessage = $event.target.value">
+  </md-input-container>
+  <button (click)="send()"><i class="material-icons">send</i></button>
+  <button *ngIf="!user" (click)="login()">Login</button>
+</div>
