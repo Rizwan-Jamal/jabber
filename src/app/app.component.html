@@ -1,5 +1,6 @@
 <div *ngIf="!user">
   spinning ...
+  <button (click)="login()">Login</button>
   <md-spinner></md-spinner>
 </div>
 <div *ngIf="user">
@@ -10,5 +11,4 @@
     <input mdInput placeholder="say hello !" (input)="currentMessage = $event.target.value">
   </md-input-container>
   <button (click)="send()"><i class="material-icons">send</i></button>
-  <button *ngIf="!user" (click)="login()">Login</button>
 </div>
