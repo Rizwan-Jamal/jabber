@@ -1,3 +1,11 @@
 <nav class="jabber-header">
   <span class="header-title">Jabber</span>
+  <div *ngIf="isLoggedIn">
+    <button md-button (click)="logout()">LOG OUT</button>
+  </div>
+  <div>
+    <a md-button href="https://github.com/mohuk/jabber" target="_blank">
+      <i class="fa fa-github fa-3x"></i>
+    </a>
+  </div>
 </nav>

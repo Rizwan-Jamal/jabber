@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
-  MdButtonModule, MdInputModule, MdLineModule,
+  MdButtonModule, MdInputModule, MdLineModule, MdListModule,
   MdProgressSpinnerModule, MdRippleModule
 } from '@angular/material';
 
@@ -11,7 +11,8 @@ import {
     MdInputModule,
     MdProgressSpinnerModule,
     MdLineModule,
-    MdRippleModule
+    MdRippleModule,
+    MdListModule
   ],
   declarations: [],
   providers: [],
