@@ -18,7 +18,7 @@ export class AppChatComponent implements OnInit {
   defaultPhotoUrl = 'https://lh5.googleusercontent.com/-lsE5oP8BaLo/AAAAAAAAAAI/AAAAAAAAA2s/mXF0lmSHJB8/photo.jpg';
 
   constructor(private db: AngularFireDatabase,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,) {
   }
 
   ngOnInit() {
@@ -49,9 +49,5 @@ export class AppChatComponent implements OnInit {
 
   isMyChat(id: string): boolean {
     return id === this.user.uid;
-  }
-
-  login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 }

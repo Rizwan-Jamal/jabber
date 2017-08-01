@@ -2,22 +2,20 @@ import { NgModule } from '@angular/core';
 import { AppChatComponent } from './chat.component';
 import { AppMaterialModule } from '../angular-material/material.module';
 import { CommonModule } from '@angular/common';
-import { ChatRoutingModule } from './chat-routing.module';
 import { FormsModule } from '@angular/forms';
+import { AppChatGuard } from './chat.guard';
 
 @NgModule({
   imports: [
     AppMaterialModule,
     CommonModule,
-    ChatRoutingModule,
     FormsModule
   ],
   exports: [
-    AppChatComponent,
-    ChatRoutingModule
+    AppChatComponent
   ],
   declarations: [AppChatComponent],
-  providers: [],
+  providers: [AppChatGuard],
 })
 export class ChatModule {
 }

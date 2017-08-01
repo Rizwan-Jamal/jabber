@@ -9,6 +9,7 @@ import { ShellModule } from './shell/shell.module';
 import { AppAngularFireModule } from './angular-fire/angular-fire.module';
 import { ChatModule } from './chat/chat.module';
 import { AppRoutingModule } from './app-routing.module';
+import { AppAuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppAngularFireModule,
     ShellModule,
     ChatModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppAuthModule
   ],
   providers: [],
   bootstrap: [
