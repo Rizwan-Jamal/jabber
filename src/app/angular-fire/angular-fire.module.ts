@@ -14,5 +14,5 @@ import { environment } from '../../environments/environment';
   declarations: [],
   providers: [],
 })
-export class JabberAngularFireModule {
+export class AppAngularFireModule {
 }

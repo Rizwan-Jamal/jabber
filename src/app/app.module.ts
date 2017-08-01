@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ShellModule } from './shell/shell.module';
-import { JabberAngularFireModule } from './angular-fire/angular-fire.module';
+import { AppAngularFireModule } from './angular-fire/angular-fire.module';
 import { ChatModule } from './chat/chat.module';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    JabberAngularFireModule,
+    AppAngularFireModule,
     ShellModule,
     ChatModule,
     AppRoutingModule
