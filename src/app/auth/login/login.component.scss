@@ -14,6 +14,9 @@
     border: 1px solid #df4b37;
     background-color: #df4b37;
     font-weight: bolder;
-    color: #FFFF !important;
+
+    .mat-button-wrapper {
+      color: #FFFFFF;
+    }
   }
 }

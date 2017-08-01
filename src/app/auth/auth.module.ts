@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppLoginComponent } from './login/login.component';
 import { AppMaterialModule } from '../angular-material/material.module';
+import { AppLoginGuard } from './login.guard';
 
 @NgModule({
   imports: [
@@ -12,7 +13,9 @@ import { AppMaterialModule } from '../angular-material/material.module';
   declarations: [
     AppLoginComponent
   ],
-  providers: [],
+  providers: [
+    AppLoginGuard
+  ],
 })
 export class AppAuthModule {
 }

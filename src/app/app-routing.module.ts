@@ -4,6 +4,7 @@ import { AppLoginComponent } from './auth/login/login.component';
 import { ShellComponent } from './shell/shell.component';
 import { AppChatComponent } from './chat/chat.component';
 import { AppChatGuard } from './chat/chat.guard';
+import { AppLoginGuard } from './auth/login.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: AppLoginComponent
+        component: AppLoginComponent,
+        canActivate: [AppLoginGuard]
       },
       {
         path: 'chat',
