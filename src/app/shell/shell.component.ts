@@ -3,11 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-shell',
   template: `
-    <div class="container-fluid">
+    <div>
       <app-header></app-header>
     </div>
 
-    <div class="container">
+    <div>
       <router-outlet></router-outlet>
     </div>
   `
