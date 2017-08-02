@@ -4,9 +4,9 @@
       <div *ngFor="let m of messages | async" class="single-chat" [ngClass]="{'my-chat': isMyChat(m.id)}">
         <md-list-item>
           <img md-list-avatar [src]="m.photoUrl || defaultPhotoUrl">
-          <h3 md-line>{{m.name}}</h3>
-          <p md-line *ngIf="m.date">{{parseDate(m.date)}}</p>
-          <p md-line>
+          <p md-line class="name">{{m.name}}</p>
+          <p md-line class="date" *ngIf="m.date">{{parseDate(m.date)}}</p>
+          <p md-line class="message">
             <span>{{m.message}}</span>
           </p>
         </md-list-item>
@@ -16,7 +16,8 @@
   <div class="chat-input">
     <div class="col-md-12">
       <md-input-container>
-        <input mdInput maxlength="50" placeholder="Say Hello !" (keyup.enter)="send()" [(ngModel)]="currentMessage"
+        <input #userInput mdInput maxlength="50" placeholder="Say Hello !" (keyup.enter)="send()"
+               [(ngModel)]="currentMessage"
                [disabled]="sendingMessage">
         <md-hint align="end">{{currentMessage?.length || 0}} / 50</md-hint>
       </md-input-container>

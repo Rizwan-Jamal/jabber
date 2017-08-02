@@ -19,10 +19,45 @@
     margin: 5px 0;
     width: fit-content;
     max-width: 90%;
+
+    .mat-list-item {
+      padding: 2px 0;
+      .mat-list-item-content {
+        height: auto !important;
+        padding: 0 8px !important;
+
+        .mat-list-text {
+          padding: 0 10px !important;
+          .name {
+            font-size: 12px !important;
+            font-weight: bold !important;
+          }
+
+          .date {
+            font-size: 10px !important;
+          }
+
+          .message {
+            font-size: 16px !important;
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: unset !important;
+          }
+        }
+      }
+    }
   }
 
   .my-chat {
     align-self: flex-end;
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 425px) {
+    padding: 5px;
+  }
+
+  @media only screen and (min-width: 426px) {
+    padding: 10px;
   }
 }
 

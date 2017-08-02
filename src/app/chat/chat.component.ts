@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -10,7 +10,8 @@ const scrollThreshold = 750 * 1.5;
   moduleId: module.id,
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls: ['./chat.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class AppChatComponent implements OnInit {
@@ -21,6 +22,7 @@ export class AppChatComponent implements OnInit {
   sendingMessage: boolean;
 
   @ViewChild('chatContainer') chatContainerElem: ElementRef;
+  @ViewChild('userInput') userInputElem: ElementRef;
 
   constructor(private db: AngularFireDatabase,
               private afAuth: AngularFireAuth,) {
@@ -53,11 +55,9 @@ export class AppChatComponent implements OnInit {
         id: this.user.uid,
         date: moment().valueOf()
       }).then(() => {
-        this.sendingMessage = false;
-        this.currentMessage = '';
+        this.postMessageActions();
       }, () => {
-        this.sendingMessage = false;
-        this.currentMessage = '';
+        this.postMessageActions();
       });
     }
   }
@@ -77,5 +77,18 @@ export class AppChatComponent implements OnInit {
 
   private scrollListToBottom(): void {
     this.chatContainerElem.nativeElement.scrollTop = this.chatContainerElem.nativeElement.scrollHeight;
+  }
+
+  private inputFocus(): void {
+    this.userInputElem.nativeElement.focus();
+  }
+
+  private postMessageActions(): void {
+    this.sendingMessage = false;
+    this.currentMessage = '';
+    // Scroll to bottom steals focus too
+    setTimeout(() => {
+      this.inputFocus();
+    });
   }
 }

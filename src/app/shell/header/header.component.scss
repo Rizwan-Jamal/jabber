@@ -10,6 +10,16 @@
   align-items: center;
   padding: 8px 16px;
   color: white;
+
+  .github {
+    min-width: 65px;
+    &:hover {
+      color: white;
+    }
+    &:visited {
+      color: white;
+    }
+  }
 }
 
 .header-title {
