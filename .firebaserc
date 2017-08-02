@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "jabber-f2b28"
+    "default": "jabber-e9475",
+    "staging": "jabber-f2b28"
   }
 }

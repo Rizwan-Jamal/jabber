@@ -5,12 +5,20 @@
 
 export const environment = {
   production: false,
+  // firebase: {
+  //   apiKey: 'AIzaSyBFYmGGh0NO8paK8uuUwVQ8rx3nPtx-1m4',
+  //   authDomain: 'jabber-f2b28.firebaseapp.com',
+  //   databaseURL: 'https://jabber-f2b28.firebaseio.com',
+  //   storageBucket: 'abber-f2b28.appspot.com',
+  //   projectId: 'jabber-f2b28',
+  //   messagingSenderId: '988481702222'
+  // },
   firebase: {
-    apiKey: 'AIzaSyBFYmGGh0NO8paK8uuUwVQ8rx3nPtx-1m4',
-    authDomain: 'jabber-f2b28.firebaseapp.com',
-    databaseURL: 'https://jabber-f2b28.firebaseio.com',
-    storageBucket: 'abber-f2b28.appspot.com',
-    projectId: 'jabber-f2b28',
-    messagingSenderId: '988481702222'
+    apiKey: 'AIzaSyDSVF285dLHY3vaBBWPNVJPIoI4bfH6dZI',
+    authDomain: 'jabber-e9475.firebaseapp.com',
+    databaseURL: 'https://jabber-e9475.firebaseio.com',
+    projectId: 'jabber-e9475',
+    storageBucket: 'jabber-e9475.appspot.com',
+    messagingSenderId: '355484423317'
   }
 };
