@@ -12,18 +12,25 @@ import { Router } from '@angular/router';
 })
 
 export class AppLoginComponent implements OnInit {
+
+  loggingIn: boolean;
+
   constructor(private afAuth: AngularFireAuth,
               private router: Router) {
   }
 
   ngOnInit() {
+    this.loggingIn = false;
   }
 
   login() {
+    this.loggingIn = true;
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((res) => {
+        this.loggingIn = false;
         this.router.navigate(['/chat']);
       }, (err) => {
+        this.loggingIn = false;
         console.log(err);
       });
   }

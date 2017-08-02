@@ -1,3 +1,6 @@
 <div class="login-page">
-  <button md-button class="login-button" (click)="login()">G+</button>
+  <button md-button class="login-button" (click)="login()" *ngIf="!loggingIn; else spinner">G+</button>
+  <ng-template #spinner>
+    <md-spinner></md-spinner>
+  </ng-template>
 </div>
