@@ -1,12 +1,5 @@
-<!--<div *ngIf="!user">-->
-<!--spinning ...-->
-<!--<button (click)="login()">Login</button>-->
-<!--&lt;!&ndash;<md-spinner></md-spinner>&ndash;&gt;-->
-<!--</div>-->
-
-
 <div *ngIf="user" class="chats-page">
-  <div class="chats">
+  <div class="chats" #chatContainer>
     <md-list>
       <div *ngFor="let m of messages | async" class="single-chat" [ngClass]="{'my-chat': isMyChat(m.id)}">
         <md-list-item>
@@ -23,7 +16,8 @@
   <div class="chat-input">
     <div class="col-md-12">
       <md-input-container>
-        <input mdInput maxlength="50" placeholder="Say Hello !" (keyup.enter)="send()" [(ngModel)]="currentMessage">
+        <input mdInput maxlength="50" placeholder="Say Hello !" (keyup.enter)="send()" [(ngModel)]="currentMessage"
+               [disabled]="sendingMessage">
         <md-hint align="end">{{currentMessage?.length || 0}} / 50</md-hint>
       </md-input-container>
     </div>
