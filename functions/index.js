@@ -1,4 +1,10 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+const request = require('request');
+const config = functions.config();
+
+
+admin.initializeApp(config.firebase);
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -9,7 +15,7 @@ const functions = require('firebase-functions');
 
 exports.triggerBot = functions.database.ref('/messages/{pushId}')
   .onWrite(event => {
-    if(event.data.val().name !== 'MadBot'){
+    if (event.data.val().id !== 'madBot' || event.data.val().id !== 'welcomeBot') {
       const reply = getBotMessage(event.data.val().message);
       if (!reply) {
         return Promise.resolve();
@@ -18,13 +24,26 @@ exports.triggerBot = functions.database.ref('/messages/{pushId}')
         name: 'MadBot',
         message: reply,
         photoUrl: 'https://botlist.co/system/BotList/Bot/logos/000/001/890/medium/madbot.png',
-        id: -1,
+        id: 'madBot',
         date: new Date().valueOf()
       });
     } else {
       return Promise.resolve();
     }
   });
+
+exports.welcomeBot = functions.auth.user().onCreate(event => {
+  const user = event.data;
+  const fullName = user.displayName || 'Anonymous';
+
+  return admin.database().ref('messages').push({
+    name: 'Welcome Bot',
+    photoUrl: 'https://cdn.shopify.com/s/files/1/1061/1924/files/Hugging_Face_Emoji_2028ce8b-c213-4d45-94aa-21e1a0842b4d_large.png?15202324258887420558',
+    message: `Welcome to Jabber ${fullName} !`,
+    id: 'welcomeBot',
+    date: new Date().valueOf()
+  });
+});
 
 function getBotMessage(message) {
   let reply = '';
