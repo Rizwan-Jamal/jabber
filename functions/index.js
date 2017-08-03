@@ -1,6 +1,5 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const request = require('request');
 const config = functions.config();
 
 
@@ -15,8 +14,9 @@ admin.initializeApp(config.firebase);
 
 exports.triggerBot = functions.database.ref('/messages/{pushId}')
   .onWrite(event => {
-    if (event.data.val().id !== 'madBot' || event.data.val().id !== 'welcomeBot') {
-      const reply = getBotMessage(event.data.val().message);
+    console.log(event.data.val())
+    if (event.data.val().id !== 'madBot' && event.data.val().id !== 'welcomeBot') {
+      const reply = getBotMessage(event.data.val());
       if (!reply) {
         return Promise.resolve();
       }
@@ -45,9 +45,38 @@ exports.welcomeBot = functions.auth.user().onCreate(event => {
   });
 });
 
-function getBotMessage(message) {
+function getBotMessage(data) {
   let reply = '';
-  message = message.toLowerCase();
+  let message = data.message.toLowerCase();
+  if(message.includes('hello')
+    || message.includes('hi')
+    || message.includes('hey')
+  ){
+    reply = `Hello ${data.name}`
+  } else
+  if(message.includes('go')) {
+    reply = 'Go Nawaz Go!'
+  }
+  else
+  if(message.includes('haha')
+    || message.includes('lol')
+    || message.includes('lmao')
+    || message.includes('hehe')
+  ) {
+    reply = 'Mwahahahaha'
+  }
+  else
+  if(message === 'where'
+    || message.includes('where are you')
+  ) {
+    reply = 'Waheen jahan koi ata jata nahi!'
+  }
+  else
+  if(message === 'thank you'
+    || message === 'thankyou'
+  ) {
+    reply = 'You are not welcome'
+  }
   if(message.includes('jo bolay')){
     reply = '100 nihaal';
   }
