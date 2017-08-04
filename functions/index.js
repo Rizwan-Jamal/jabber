@@ -39,7 +39,7 @@ exports.welcomeBot = functions.auth.user().onCreate(event => {
   return admin.database().ref('messages').push({
     name: 'Welcome Bot',
     photoUrl: 'https://cdn.shopify.com/s/files/1/1061/1924/files/Hugging_Face_Emoji_2028ce8b-c213-4d45-94aa-21e1a0842b4d_large.png?15202324258887420558',
-    message: `Welcome to Jabber ${fullName} !`,
+    message: `Welcome to Jabber, ${fullName} !`,
     id: 'welcomeBot',
     date: new Date().valueOf()
   });
@@ -79,7 +79,9 @@ function getBotMessage(data) {
   }
   if(message.includes('jo bolay')){
     reply = '100 nihaal';
+  } else
+  if(message.includes('zafar')){
+    reply = 'SUPAARI !';
   }
-
   return reply;
 }
